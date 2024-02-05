@@ -34,7 +34,7 @@ const AlbumAndTrack = styled.p`
 function Artist() {
   return (
     <Container>
-      <AllArtist>Albums : 4</AllArtist>
+      <AllArtist>Artist : 4</AllArtist>
       <Wrapper>
         <ArtistContainer>
           <ImageContainer>

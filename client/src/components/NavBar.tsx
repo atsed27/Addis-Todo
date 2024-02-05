@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   color: rgb(187, 186, 186);
@@ -21,10 +22,18 @@ function NavBar() {
   return (
     <Container>
       <Wrapper>
-        <Title>Home</Title>
-        <Title>Album</Title>
-        <Title>Artist</Title>
-        <Title>Gener</Title>
+        <Title>
+          <Link to="/">Home</Link>
+        </Title>
+        <Title>
+          <Link to="/album">Album</Link>
+        </Title>
+        <Title>
+          <Link to="/artist">Artist</Link>
+        </Title>
+        <Title>
+          <Link to="/gener">Gener</Link>
+        </Title>
       </Wrapper>
     </Container>
   );

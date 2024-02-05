@@ -52,7 +52,7 @@ function SideBar() {
     <Container>
       <Wrapper>
         <SideBarMenu>
-          <SideBarTitle>AdisMusic</SideBarTitle>
+          <SideBarTitle>AddisMusic</SideBarTitle>
           <SideBarList>
             <SideBarListItem>Home</SideBarListItem>
 

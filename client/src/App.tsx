@@ -7,6 +7,7 @@ import styled from '@emotion/styled';
 import NavBar from './components/NavBar';
 import BottomBar from './components/BottomBar';
 import Artist from './page/Artist';
+import AlbumDetail from './page/AlbumDetail';
 
 const Container = styled.div`
   display: grid;
@@ -41,19 +42,20 @@ function App() {
       </Wrapper>
 
       <Wrapper2>
-        {/** Mobile view */}
-        <MobileMenu>
-          <NavBar />
-        </MobileMenu>
-
         <Wrapper3>
           <Wrapper4>
             <BrowserRouter>
+              {/** Mobile view */}
+              <MobileMenu>
+                <NavBar />
+              </MobileMenu>
+
               <Routes>
                 <Route path="/">
                   <Route index element={<Home />} />
                   <Route path="/album" element={<Album />} />
                   <Route path="/artist" element={<Artist />} />
+                  <Route path="/album/:id" element={<AlbumDetail />} />
                 </Route>
               </Routes>
             </BrowserRouter>

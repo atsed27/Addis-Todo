@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   margin-top: 20px;
@@ -44,10 +45,17 @@ function Album() {
       <Wrapper>
         <AlbumContainer>
           <ImageContainer>
-            <Image src="../img/man.png" alt="music cover" />
+            <Link to="/album/test">
+              <Image src="../img/man.png" alt="music cover" />
+            </Link>
           </ImageContainer>
-          <AlbumTitle>Ethiopia</AlbumTitle>
-          <Artist>Tedd Afro</Artist>
+          <AlbumTitle>
+            <Link to={'/album/test'}>Ethiopia</Link>
+          </AlbumTitle>
+
+          <Artist>
+            <Link to="/test">Tedd Afro</Link>
+          </Artist>
         </AlbumContainer>
         <AlbumContainer>
           <ImageContainer>
