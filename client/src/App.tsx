@@ -5,6 +5,7 @@ import Album from './page/Album';
 import SideBar from './components/sideBar/SideBar';
 import styled from '@emotion/styled';
 import NavBar from './components/NavBar';
+import BottomBar from './components/BottomBar';
 
 const Container = styled.div`
   display: grid;
@@ -27,6 +28,10 @@ const MobileMenu = styled.div`
     display: none;
   }
 `;
+const Wrapper3 = styled.div``;
+const Wrapper4 = styled.div`
+  height: 100vh;
+`;
 function App() {
   return (
     <Container>
@@ -40,14 +45,19 @@ function App() {
           <NavBar />
         </MobileMenu>
 
-        <BrowserRouter>
-          <Routes>
-            <Route path="/">
-              <Route index element={<Home />} />
-              <Route path="/album" element={<Album />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <Wrapper3>
+          <Wrapper4>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/">
+                  <Route index element={<Home />} />
+                  <Route path="/album" element={<Album />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </Wrapper4>
+          <BottomBar />
+        </Wrapper3>
       </Wrapper2>
     </Container>
   );

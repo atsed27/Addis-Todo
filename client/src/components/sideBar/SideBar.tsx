@@ -4,8 +4,9 @@ import styled from '@emotion/styled';
 const Container = styled.div`
   height: calc(100vh - 50px);
   background-color: rgb(251, 252, 252);
-  position: sticky;
+  position: fixed;
   top: 10px;
+  width: 25%;
 `;
 
 const Wrapper = styled.div`

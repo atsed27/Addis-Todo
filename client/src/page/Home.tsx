@@ -28,11 +28,11 @@ const ArtistName = styled.p`
 const Button = styled.button`
   background-color: rgb(59 130 246);
   border: none;
-  padding: 7px 10px;
-  border-radius: 0.7rem;
+  padding: 7px 17px;
+  border-radius: 0.9rem;
   margin: 16px 0px;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
 `;
 
 const HR = styled.hr`
@@ -45,7 +45,11 @@ const Image = styled.div`
   background-color: red;
 `;
 const Img = styled.img``;
-const MainComponent = styled.div``;
+const MainComponent = styled.div`
+  background-color: red;
+  overflow-y: scroll;
+`;
+const E = styled.div``;
 function Home() {
   return (
     <Container>
@@ -62,7 +66,69 @@ function Home() {
         </TitleContainer>
         <MainComponent>
           <HR />
-          Main
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
+          <E>dani</E>
         </MainComponent>
       </Wrapper>
     </Container>
