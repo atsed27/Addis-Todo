@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  height: calc(100vh - 50px);
+  height: calc(100vh - 0px);
   background-color: rgb(251, 252, 252);
   position: fixed;
   top: 10px;
