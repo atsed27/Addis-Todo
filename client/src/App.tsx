@@ -6,6 +6,7 @@ import SideBar from './components/sideBar/SideBar';
 import styled from '@emotion/styled';
 import NavBar from './components/NavBar';
 import BottomBar from './components/BottomBar';
+import Artist from './page/Artist';
 
 const Container = styled.div`
   display: grid;
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/">
                   <Route index element={<Home />} />
                   <Route path="/album" element={<Album />} />
+                  <Route path="/artist" element={<Artist />} />
                 </Route>
               </Routes>
             </BrowserRouter>

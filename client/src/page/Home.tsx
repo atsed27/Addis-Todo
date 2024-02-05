@@ -77,6 +77,7 @@ const Shelf = styled.button`
   font-weight: 600;
 `;
 const MusicContainer = styled.div`
+  margin-bottom: 170px;
   background-color: gray;
   @media only screen and (max-width: 600px) {
     background-color: white;
