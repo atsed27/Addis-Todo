@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 //our path
 import songRouter from './router/song.js';
@@ -26,6 +27,12 @@ const connect = () => {
 
 //Basic on  express
 app.use(express.json());
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
 
 //our Router
 app.use('/api/song', songRouter);
