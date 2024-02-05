@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import BottomBar from './components/BottomBar';
 import Artist from './page/Artist';
 import AlbumDetail from './page/AlbumDetail';
+import ArtistDetail from './page/ArtistDetail';
 
 const Container = styled.div`
   display: grid;
@@ -56,6 +57,7 @@ function App() {
                   <Route path="/album" element={<Album />} />
                   <Route path="/artist" element={<Artist />} />
                   <Route path="/album/:id" element={<AlbumDetail />} />
+                  <Route path="/artist/:id" element={<ArtistDetail />} />
                 </Route>
               </Routes>
             </BrowserRouter>
