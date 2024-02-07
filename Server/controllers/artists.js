@@ -8,9 +8,16 @@ export const GetAllArtist = async (req, res, next) => {
 
     if (!findSong)
       return next(CreateError(404, 'there is no artist in database'));
+
     let array = [];
     findSong.map((item) => {
-      return array.includes(item.artist) ? null : array.push(item.artist);
+      for (let i in array) {
+        if (array[i].album === item.album && array[i].artist === item.artist) {
+          console.log('hy');
+          return;
+        }
+      }
+      return array.push({ artist: item.artist, album: item.album });
     });
 
     res.status(200).json(array);

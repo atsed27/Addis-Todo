@@ -33,3 +33,13 @@ export const GetAlbum = async (req, res, next) => {
     console.log(error);
   }
 };
+
+//get Detail album
+export const GetAlbumDetail = async (req, res, next) => {
+  try {
+    const track = await Song.find({ album: req.params.id });
+    res.status(200).json(track);
+  } catch (error) {
+    console.log(error);
+  }
+};
