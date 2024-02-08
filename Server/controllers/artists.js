@@ -10,17 +10,48 @@ export const GetAllArtist = async (req, res, next) => {
       return next(CreateError(404, 'there is no artist in database'));
 
     let array = [];
-    findSong.map((item) => {
-      for (let i in array) {
-        if (array[i].album === item.album && array[i].artist === item.artist) {
-          console.log('hy');
+    for (let i in findSong) {
+      const length = async () => {
+        const track = await Song.find({ album: findSong[i].album });
+        return track;
+      };
+      let x = await length();
+
+      array.push({
+        artist: findSong[i].artist,
+        album: findSong[i].album,
+        totalSong: x.length,
+      });
+    }
+    const lastArray = [];
+    array.map((item) => {
+      for (let i in lastArray) {
+        if (
+          lastArray[i].album === item.album &&
+          lastArray[i].artist === item.artist
+        ) {
           return;
         }
       }
-      return array.push({ artist: item.artist, album: item.album });
+      return lastArray.push({ ...item });
     });
 
-    res.status(200).json(array);
+    const Album = [];
+    lastArray.map((item, i) => {
+      for (let i in Album) {
+        if (lastArray[i].artist === item.artist) {
+          Album[i].totalSong = Album[i].totalSong + item.totalSong;
+          Album[i].totalAlbum = Album[i].totalAlbum + 1;
+          return Album[i].totalSong, Album[i].totalAlbum;
+        }
+      }
+      return Album.push({
+        artist: item.artist,
+        totalAlbum: 1,
+        totalSong: item.totalSong,
+      });
+    });
+    res.status(200).json(Album);
   } catch (error) {
     console.log(error);
     return next(error);

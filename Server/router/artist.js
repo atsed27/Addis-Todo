@@ -7,4 +7,5 @@ router.get('/', GetAllArtist);
 
 //get album in artist
 router.get('/album/:id', GetAlbumWithArtist);
+
 export default router;
