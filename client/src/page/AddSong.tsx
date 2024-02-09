@@ -80,23 +80,23 @@ function AddSong() {
             />
           </InputContainer>
           <InputContainer>
-            <LAble>Title</LAble>
+            <LAble>Artist</LAble>
             <Input
-              placeholder="enter song title"
+              placeholder="enter song Artist"
               onChange={(e) => setArtist(e.target.value)}
             />
           </InputContainer>
           <InputContainer>
-            <LAble>Title</LAble>
+            <LAble>Album</LAble>
             <Input
-              placeholder="enter song title"
+              placeholder="enter song Album"
               onChange={(e) => setAlbum(e.target.value)}
             />
           </InputContainer>
           <InputContainer>
-            <LAble>Title</LAble>
+            <LAble>Genre</LAble>
             <Input
-              placeholder="enter song title"
+              placeholder="enter song Genre"
               onChange={(e) => setGenre(e.target.value)}
             />
           </InputContainer>

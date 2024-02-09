@@ -5,7 +5,6 @@ import Album from './page/Album';
 import SideBar from './components/sideBar/SideBar';
 import styled from '@emotion/styled';
 import NavBar from './components/NavBar';
-import BottomBar from './components/BottomBar';
 import Artist from './page/Artist';
 import AlbumDetail from './page/AlbumDetail';
 import ArtistDetail from './page/ArtistDetail';
@@ -64,7 +63,6 @@ function App() {
               </Routes>
             </BrowserRouter>
           </Wrapper4>
-          <BottomBar />
         </Wrapper3>
       </Wrapper2>
     </Container>

@@ -61,21 +61,36 @@ export const GetAllArtist = async (req, res, next) => {
 //get Album with Artist
 export const GetAlbumWithArtist = async (req, res, next) => {
   try {
-    console.log(req.params.id);
     const findArtist = await Song.find({
       artist: req.params.id,
     });
     if (findArtist.length <= 0)
       return next(CreateError(404, 'Artist is not found'));
-    console.log(findArtist);
-    let findAlbum = [];
-    findArtist.map((item) =>
-      findAlbum.includes(item.album) ? null : findAlbum.push(item.album)
-    );
-    console.log(findAlbum);
-    res.status(200).json(findAlbum);
+
+    let array = [];
+    findArtist.map((item) => {
+      for (let i in array) {
+        if (array[i].album === item.album) {
+          return;
+        }
+      }
+      return array.push({ album: item.album });
+    });
+
+    res.status(200).json(array);
   } catch (error) {
     console.log(error);
+    next(error);
+  }
+};
+
+//get Track Artist
+export const GetTrack = async (req, res, next) => {
+  try {
+    const track = await Song.find({ artist: req.params.id });
+    if (!track) return next(CreateError(404, 'user is not found'));
+    res.status(200).json(track);
+  } catch (error) {
     next(error);
   }
 };

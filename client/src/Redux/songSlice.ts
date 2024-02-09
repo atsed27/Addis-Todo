@@ -7,6 +7,7 @@ interface CounterStates {
   artist: Artist[];
   loading: boolean;
   error: boolean;
+  play: boolean;
 }
 
 const initialState: CounterStates = {
@@ -15,12 +16,20 @@ const initialState: CounterStates = {
   artist: [],
   loading: false,
   error: false,
+  play: false,
 };
 
 const songSlice = createSlice({
   name: 'song',
   initialState,
   reducers: {
+    playSong(state, action: PayloadAction<boolean>) {
+      state.play = action.payload;
+    },
+    PauseSong(state, action: PayloadAction<boolean>) {
+      state.play = action.payload;
+    },
+
     fetchStart(state) {
       state.error = true;
       state.loading = false;
@@ -58,6 +67,9 @@ const songSlice = createSlice({
       state.loading = false;
       state.song = action.payload;
     },
+    fetchArtistAlbumStart(state, action: PayloadAction<string>) {
+      state.loading = true;
+    },
     fetchArtistStart(state) {
       state.loading = true;
     },
@@ -73,11 +85,14 @@ const songSlice = createSlice({
 });
 
 export const {
+  playSong,
+  PauseSong,
   fetchStart,
   fetchSuccess,
   fetchFiler,
   fetchArtistSongStart,
   fetchArtistSongSuccess,
+  fetchArtistAlbumStart,
   fetchUpdateStart,
   fetchAlbumFiler,
   fetchAlbumSuccess,

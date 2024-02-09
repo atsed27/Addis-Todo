@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
-import Album from './Album';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchArtistSongStart } from '../Redux/songSlice';
+import {
+  fetchArtistAlbumStart,
+  fetchArtistSongStart,
+} from '../Redux/songSlice';
 import { RootState } from '../Redux/store';
 import TrackM from '../components/Track';
+import { useLocation } from 'react-router-dom';
+import AlbumA from '../components/AlbumA';
 
 const Container = styled.div`
   margin: 10px 50px;
@@ -28,14 +33,19 @@ const AlbumC = styled.div``;
 function ArtistDetail() {
   const [track, setTrack] = useState(true);
   const [album, setAlbum] = useState(false);
-  const params: string = 'aster';
+  const location = useLocation();
+  const artist: string = location.pathname.split('/')[2];
+  console.log(artist);
+
   const dispatch = useDispatch();
   useEffect(() => {
     console.log('hy');
-    dispatch(fetchArtistSongStart(params));
-  }, [dispatch]);
+    dispatch(fetchArtistSongStart(artist));
+    dispatch(fetchArtistAlbumStart(artist));
+  }, [artist, dispatch]);
   const song = useSelector((state: RootState) => state.song);
-
+  const albums = useSelector((state: RootState) => state.album);
+  console.log(albums);
   return (
     <Container>
       <Wrapper>
@@ -64,7 +74,7 @@ function ArtistDetail() {
         )}
         {album && (
           <AlbumC>
-            <Album />
+            <AlbumA album={albums} />
           </AlbumC>
         )}
       </Wrapper>

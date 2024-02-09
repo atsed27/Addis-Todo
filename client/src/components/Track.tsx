@@ -3,7 +3,12 @@ import styled from '@emotion/styled';
 import { Song } from '../types/Task';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchStart, fetchUpdateStart } from '../Redux/songSlice';
+import {
+  PauseSong,
+  fetchStart,
+  fetchUpdateStart,
+  playSong,
+} from '../Redux/songSlice';
 import { Link } from 'react-router-dom';
 import { RootState } from '../Redux/store';
 
@@ -55,14 +60,17 @@ const MusicCont = styled.div`
   margin: 5px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 80%;
   cursor: pointer;
   @media only screen and (max-width: 600px) {
     background-color: gray;
+    width: 95%;
   }
 `;
 
-const Img2 = styled.img``;
 const Music = styled.div`
+  width: 50%;
   margin-left: 20px;
 `;
 const MusicTitle = styled.h4`
@@ -171,10 +179,17 @@ function TrackM({ song }: Props) {
   };
 
   const testSong = useSelector((state: RootState) => state.song);
-
+  const play = useSelector((state: RootState) => state.play);
   if (testSong) {
     song = testSong;
   }
+  const handlePlayClick = () => {
+    if (!play) {
+      dispatch(playSong(!play));
+    } else {
+      dispatch(PauseSong(!play));
+    }
+  };
   return (
     <MainComponent>
       <HR />
@@ -194,8 +209,7 @@ function TrackM({ song }: Props) {
         <MusicContainer>
           {song.map((item) => (
             <div key={item._id}>
-              <MusicCont>
-                <Img2 src={'/'} alt="music" />
+              <MusicCont onClick={handlePlayClick}>
                 <Music>
                   <MusicTitle>{item.title}</MusicTitle>
                   <Artist>{item.artist}</Artist>

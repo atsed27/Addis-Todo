@@ -5,6 +5,7 @@ import {
   fetchAlbumDetailStart,
   fetchAlbumFiler,
   fetchAlbumSuccess,
+  fetchArtistAlbumStart,
   fetchArtistFiler,
   fetchArtistSongStart,
   fetchArtistSongSuccess,
@@ -91,6 +92,19 @@ function* fetchArtistSongSync(
     fetchFiler();
   }
 }
+
+function* fetchArtistAlbumSync(
+  action: ReturnType<typeof fetchArtistAlbumStart>
+): SagaIterator {
+  try {
+    const album = yield call(() =>
+      axios.get(`http://localhost:5000/api/artist/album/${action.payload}`)
+    );
+    yield put(fetchAlbumSuccess(album.data));
+  } catch (error) {
+    fetchFiler();
+  }
+}
 export default function* rootSaga(): SagaIterator {
   yield takeLatest('song/fetchStart', fetchStartAsync);
   yield takeLatest('song/fetchAlbumStart', fetchAlbumSync);
@@ -102,4 +116,7 @@ export default function* rootSaga(): SagaIterator {
 
   //get each artist Song
   yield takeLatest('song/fetchArtistSongStart', fetchArtistSongSync);
+
+  //get each artist Album
+  yield takeLatest('song/fetchArtistAlbumStart', fetchArtistAlbumSync);
 }

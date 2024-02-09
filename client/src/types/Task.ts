@@ -8,7 +8,7 @@ export type Song = {
 
 export type Album = {
   album: string;
-  artist: string;
+  artist?: string;
 };
 
 export type Artist = {
