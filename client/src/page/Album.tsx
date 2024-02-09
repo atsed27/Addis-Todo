@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import AlbumA from '../components/AlbumA';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../Redux/store';
+import { fetchAlbumStart } from '../Redux/songSlice';
 
 const Container = styled.div`
   margin-top: 20px;
@@ -23,11 +26,17 @@ const Wrapper = styled.div`
 `;
 
 function Album() {
+  const album = useSelector((state: RootState) => state.album);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAlbumStart());
+  }, [dispatch]);
   return (
     <Container>
-      <AllAlbum>Albums : 4</AllAlbum>
+      <AllAlbum>Albums : {album.length}</AllAlbum>
       <Wrapper>
-        <AlbumA />
+        <AlbumA album={album} />
       </Wrapper>
     </Container>
   );

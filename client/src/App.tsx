@@ -9,6 +9,7 @@ import BottomBar from './components/BottomBar';
 import Artist from './page/Artist';
 import AlbumDetail from './page/AlbumDetail';
 import ArtistDetail from './page/ArtistDetail';
+import AddSong from './page/AddSong';
 
 const Container = styled.div`
   display: grid;
@@ -58,6 +59,7 @@ function App() {
                   <Route path="/artist" element={<Artist />} />
                   <Route path="/album/:id" element={<AlbumDetail />} />
                   <Route path="/artist/:id" element={<ArtistDetail />} />
+                  <Route path="/new" element={<AddSong />} />
                 </Route>
               </Routes>
             </BrowserRouter>

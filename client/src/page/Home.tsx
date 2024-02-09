@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import TrackM from '../components/Track';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../Redux/store';
+import { fetchStart } from '../Redux/songSlice';
 const Container = styled.div`
   margin-top: 20px;
   @media only screen and (max-width: 600px) {
@@ -10,7 +14,6 @@ const Container = styled.div`
 
 const Wrapper = styled.div``;
 const TitleContainer = styled.div`
-  display: flex;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,7 +32,7 @@ const ArtistName = styled.p`
 const Button = styled.button`
   background-color: rgb(59 130 246);
   border: none;
-  padding: 7px 17mainpx;
+  padding: 7px 17px;
   border-radius: 0.9rem;
   margin: 16px 0px;
   font-size: 16px;
@@ -41,6 +44,12 @@ const Image = styled.div`
 const Img = styled.img``;
 
 function Home() {
+  const song = useSelector((state: RootState) => state.song);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchStart());
+  }, [dispatch]);
   return (
     <Container>
       <Wrapper>
@@ -54,7 +63,7 @@ function Home() {
             <Img src={'../img/man.png'} alt="music" />
           </Image>
         </TitleContainer>
-        <TrackM />
+        <TrackM song={song} />
       </Wrapper>
     </Container>
   );

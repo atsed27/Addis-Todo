@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
+import Album from './Album';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchArtistSongStart } from '../Redux/songSlice';
+import { RootState } from '../Redux/store';
 import TrackM from '../components/Track';
-import AlbumDetailComponents from '../components/AlbumDetailComponents';
 
 const Container = styled.div`
   margin: 10px 50px;
@@ -21,10 +24,17 @@ const Right = styled.button``;
 const Track = styled.div`
   margin-top: 20px;
 `;
-const Album = styled.div``;
+const AlbumC = styled.div``;
 function ArtistDetail() {
   const [track, setTrack] = useState(true);
   const [album, setAlbum] = useState(false);
+  const params: string = 'aster';
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log('hy');
+    dispatch(fetchArtistSongStart(params));
+  }, [dispatch]);
+  const song = useSelector((state: RootState) => state.song);
 
   return (
     <Container>
@@ -49,13 +59,13 @@ function ArtistDetail() {
         </Top>
         {track && (
           <Track>
-            <TrackM />
+            <TrackM song={song} />
           </Track>
         )}
         {album && (
-          <Album>
-            <AlbumDetailComponents />
-          </Album>
+          <AlbumC>
+            <Album />
+          </AlbumC>
         )}
       </Wrapper>
     </Container>

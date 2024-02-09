@@ -1,6 +1,8 @@
 import React from 'react';
 
 import styled from '@emotion/styled';
+import { Song } from '../types/Task';
+
 const Top = styled.div`
   color: rgb(187, 186, 186);
   display: flex;
@@ -62,7 +64,11 @@ const Artist = styled.p`
   margin: 0px;
 `;
 const HR = styled.hr``;
-function AlbumDetailComponents() {
+type Props = {
+  track: Song[];
+};
+function AlbumDetailComponents({ track }: Props) {
+  console.log(track);
   return (
     <>
       <Top>
@@ -75,101 +81,18 @@ function AlbumDetailComponents() {
       </Top>
       <MainComponent>
         <MusicContainer>
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />{' '}
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />{' '}
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />{' '}
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />{' '}
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />{' '}
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />{' '}
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />{' '}
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />{' '}
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
-          <HR />
-          <MusicCont>
-            <Img2 src={'/'} alt="music" />
-            <Music>
-              <MusicTitle>Ethiopia</MusicTitle>
-              <Artist>Tedd Afro</Artist>
-            </Music>
-          </MusicCont>
+          {track.map((item) => (
+            <div key={item._id}>
+              <MusicCont>
+                <Img2 src={'/'} alt="music" />
+                <Music>
+                  <MusicTitle>{item.title}</MusicTitle>
+                  <Artist>{item.artist}</Artist>
+                </Music>
+              </MusicCont>
+              <HR />
+            </div>
+          ))}
         </MusicContainer>
       </MainComponent>
     </>
