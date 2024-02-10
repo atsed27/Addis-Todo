@@ -58,18 +58,21 @@ function AddSong() {
   const dispatch = useDispatch();
   const handleClick: SubmitHandler<FormValues> = async (data) => {
     console.log(data);
-    const res = await axios.post('http://localhost:5000/api/song/create', {
-      title: data.title,
-      artist: data.artist,
-      album: data.album,
-      genre: data.genre,
-    });
+    const res = await axios.post(
+      'https://server-kh6f.onrender.com/api/song/create',
+      {
+        title: data.title,
+        artist: data.artist,
+        album: data.album,
+        genre: data.genre,
+      }
+    );
     if (res.status === 201) {
       dispatch(fetchStart());
       let x = '/';
       return (window.location.href = x);
     } else {
-      return (window.location.href = 'http://localhost:3000/new');
+      return (window.location.href = 'https://music-todo-one.vercel.app/new');
     }
   };
   return (

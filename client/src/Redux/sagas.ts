@@ -28,7 +28,7 @@ function* fetchStartAsync(): SagaIterator {
 function* fetchAlbumSync(): SagaIterator {
   try {
     const Album = yield call(() =>
-      axios.get('http://localhost:5000/api/albums/')
+      axios.get('https://server-kh6f.onrender.com/api/albums/')
     );
     yield put(fetchAlbumSuccess(Album?.data));
   } catch (error) {
@@ -39,7 +39,7 @@ function* fetchAlbumSync(): SagaIterator {
 function* fetchArtistSync(): SagaIterator {
   try {
     const artist = yield call(() =>
-      axios.get('http://localhost:5000/api/artist/')
+      axios.get('https://server-kh6f.onrender.com/api/artist/')
     );
 
     yield put(fetchArtistSuccess(artist?.data));
@@ -55,7 +55,7 @@ function* fetchAlbumDetailSync(
   try {
     console.log(action.payload);
     const track = yield call(() =>
-      axios.get(`http://localhost:5000/api/albums/${action.payload}`)
+      axios.get(`https://server-kh6f.onrender.com/api/albums/${action.payload}`)
     );
     yield put(fetchSuccess(track?.data));
   } catch (error) {
@@ -69,12 +69,15 @@ function* fetchUpdateSync(
   try {
     console.log(action);
     yield call(() =>
-      axios.put(`http://localhost:5000/api/song/update/${action.payload._id}`, {
-        title: action.payload.title,
-        artist: action.payload.artist,
-        album: action.payload.album,
-        genre: action.payload.genre,
-      })
+      axios.put(
+        `https://server-kh6f.onrender.com/api/song/update/${action.payload._id}`,
+        {
+          title: action.payload.title,
+          artist: action.payload.artist,
+          album: action.payload.album,
+          genre: action.payload.genre,
+        }
+      )
     );
   } catch (error) {
     console.log(error);
@@ -88,7 +91,7 @@ function* fetchArtistSongSync(
   try {
     console.log(action.payload);
     const song = yield call(() =>
-      axios.get(`http://localhost:5000/api/artist/${action.payload}`)
+      axios.get(`https://server-kh6f.onrender.com/api/artist/${action.payload}`)
     );
     console.log(song);
     yield put(fetchArtistSongSuccess(song.data));
@@ -103,7 +106,9 @@ function* fetchArtistAlbumSync(
 ): SagaIterator {
   try {
     const album = yield call(() =>
-      axios.get(`http://localhost:5000/api/artist/album/${action.payload}`)
+      axios.get(
+        `https://server-kh6f.onrender.com/api/artist/album/${action.payload}`
+      )
     );
     yield put(fetchAlbumSuccess(album.data));
   } catch (error) {
@@ -117,7 +122,9 @@ function* fetchGenreSync(
   try {
     console.log(action);
     const song = yield call(() =>
-      axios.get(`http://localhost:5000/api/genre/get?genre=${action.payload}`)
+      axios.get(
+        `https://server-kh6f.onrender.com/api/genre/get?genre=${action.payload}`
+      )
     );
     yield put(fetchGenreSuccess(song.data));
   } catch (error) {
