@@ -63,7 +63,13 @@ function Artist() {
               </ImageContainer>
               <ArtistInfo>
                 <ArtistName>
-                  <Link to={`/artist/${item.artist}`}> {item.artist} </Link>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to={`/artist/${item.artist}`}
+                  >
+                    {' '}
+                    {item.artist}{' '}
+                  </Link>
                 </ArtistName>
                 <AlbumAndTrack>
                   <Link to={`/artist/${item.artist}`}>

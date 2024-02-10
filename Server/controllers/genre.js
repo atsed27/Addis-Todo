@@ -5,7 +5,6 @@ import Song from '../model/Song.js';
 export const GetByGenre = async (req, res, next) => {
   try {
     const { genre } = req.query;
-    console.log(genre);
     if (genre === 'AllGenre' || genre === 'All') {
       const findSong = await Song.find();
       return res.status(200).json(findSong);

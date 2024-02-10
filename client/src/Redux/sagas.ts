@@ -65,6 +65,7 @@ function* fetchUpdateSync(
   action: ReturnType<typeof fetchUpdateStart>
 ): SagaIterator {
   try {
+    console.log(action);
     yield call(() =>
       axios.put(`http://localhost:5000/api/song/update/${action.payload._id}`, {
         title: action.payload.title,

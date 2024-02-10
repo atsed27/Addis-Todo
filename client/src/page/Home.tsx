@@ -4,7 +4,8 @@ import TrackM from '../components/Track';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../Redux/store';
-import { fetchStart } from '../Redux/songSlice';
+import { fetchStart, fetchUpdateStart } from '../Redux/songSlice';
+import { Song } from '../types/Task';
 const Container = styled.div`
   margin-top: 20px;
   @media only screen and (max-width: 600px) {
@@ -17,14 +18,17 @@ const Wrapper = styled.div``;
 function Home() {
   const song = useSelector((state: RootState) => state.song);
   const dispatch = useDispatch();
-
+  const update = async (item: Song) => {
+    dispatch(fetchUpdateStart(item));
+    dispatch(fetchStart());
+  };
   useEffect(() => {
     dispatch(fetchStart());
   }, [dispatch]);
   return (
     <Container>
       <Wrapper>
-        <TrackM song={song} />
+        <TrackM song={song} update={update} />
       </Wrapper>
     </Container>
   );

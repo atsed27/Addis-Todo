@@ -41,7 +41,7 @@ const SideBarListItem = styled.li`
   align-items: center;
   border-radius: 10px;
   &:hover {
-    background-color: rgb(228, 228, 253);
+    background-color: rgb(228, 211, 111);
   }
   &:active {
     background-color: rgb(228, 228, 253);

@@ -2,15 +2,9 @@ import React, { FormEvent, useState } from 'react';
 import styled from '@emotion/styled';
 import { Song } from '../types/Task';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  PauseSong,
-  fetchStart,
-  fetchUpdateStart,
-  playSong,
-} from '../Redux/songSlice';
+import { useDispatch } from 'react-redux';
+import { fetchStart } from '../Redux/songSlice';
 import { Link } from 'react-router-dom';
-import { RootState } from '../Redux/store';
 
 const HR = styled.hr`
   @media only screen and (max-width: 600px) {
@@ -124,16 +118,10 @@ const Submit = styled.button`
 `;
 type Props = {
   song: Song[];
+  update: (item: Song) => void;
 };
 
-interface songState {
-  _id: string;
-  title: string;
-  album: string;
-  artist: string;
-  genre: string;
-}
-function TrackM({ song }: Props) {
+function TrackM({ song, update }: Props) {
   const [edit, setEdit] = useState(false);
   const [id, setId] = useState('');
   const [title, setTitle] = useState('');
@@ -147,7 +135,7 @@ function TrackM({ song }: Props) {
     await axios.delete(`http://localhost:5000/api/song/delete/${id}`);
     dispatch(fetchStart());
   };
-  const handleUpdate = (id: string, item: songState) => {
+  const handleUpdate = (id: string, item: Song) => {
     setTitle(item.title);
     setArtist(item.artist);
     setAlbum(item.album);
@@ -155,28 +143,13 @@ function TrackM({ song }: Props) {
     setEdit(!edit);
     setId(id);
   };
-  const fetch = () => {
-    dispatch(fetchStart());
-  };
+
   const handleClickUpdate = async (e: FormEvent) => {
     e.preventDefault();
-    dispatch(fetchUpdateStart({ _id: id, title, artist, album, genre }));
-    fetch();
+    update({ _id: id, title, artist, album, genre });
     setEdit(!edit);
   };
 
-  const testSong = useSelector((state: RootState) => state.song);
-  const play = useSelector((state: RootState) => state.play);
-  if (testSong) {
-    song = testSong;
-  }
-  const handlePlayClick = () => {
-    if (!play) {
-      dispatch(playSong(!play));
-    } else {
-      dispatch(PauseSong(!play));
-    }
-  };
   return (
     <MainComponent>
       <HR />
@@ -194,7 +167,7 @@ function TrackM({ song }: Props) {
         <MusicContainer>
           {song.map((item) => (
             <div key={item._id}>
-              <MusicCont onClick={handlePlayClick}>
+              <MusicCont>
                 <Music>
                   <MusicTitle>{item.title}</MusicTitle>
                   <Artist>{item.artist}</Artist>

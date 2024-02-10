@@ -78,8 +78,8 @@ function AlbumDetailComponents({ track }: Props) {
             alt="albumImg"
           />
         </ImageContainer>
-        <AlbumTitle>Ethiop</AlbumTitle>
-        <ArtistName>Teddy Afro</ArtistName>
+        <AlbumTitle>Album:{track[0]?.album}</AlbumTitle>
+        <ArtistName>{track[0]?.artist}</ArtistName>
         <YearAndTime>2018 | 40:33</YearAndTime>
       </Top>
       <MainComponent>

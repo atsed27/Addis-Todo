@@ -6,11 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchArtistAlbumStart,
   fetchArtistSongStart,
+  fetchUpdateStart,
 } from '../Redux/songSlice';
 import { RootState } from '../Redux/store';
 import TrackM from '../components/Track';
 import { useLocation } from 'react-router-dom';
 import AlbumA from '../components/AlbumA';
+import { Song } from '../types/Task';
 
 const Container = styled.div`
   margin: 10px 50px;
@@ -39,13 +41,16 @@ function ArtistDetail() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log('hy');
     dispatch(fetchArtistSongStart(artist));
     dispatch(fetchArtistAlbumStart(artist));
   }, [artist, dispatch]);
+  const update = async (item: Song) => {
+    dispatch(fetchUpdateStart(item));
+    dispatch(fetchArtistSongStart(artist));
+  };
   const song = useSelector((state: RootState) => state.song);
   const albums = useSelector((state: RootState) => state.album);
-  console.log(albums);
+
   return (
     <Container>
       <Wrapper>
@@ -69,7 +74,7 @@ function ArtistDetail() {
         </Top>
         {track && (
           <Track>
-            <TrackM song={song} />
+            <TrackM song={song} update={update} />
           </Track>
         )}
         {album && (

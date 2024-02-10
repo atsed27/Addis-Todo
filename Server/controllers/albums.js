@@ -17,7 +17,6 @@ export const GetAlbum = async (req, res, next) => {
             array[i].album === item.album &&
             array[i].artist === item.artist
           ) {
-            console.log('hy');
             return;
           }
         }
