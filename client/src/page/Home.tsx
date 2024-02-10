@@ -19,6 +19,7 @@ function Home() {
   const song = useSelector((state: RootState) => state.song);
   const dispatch = useDispatch();
   const update = async (item: Song) => {
+    dispatch(fetchStart());
     dispatch(fetchUpdateStart(item));
     dispatch(fetchStart());
   };
