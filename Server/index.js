@@ -26,6 +26,10 @@ const connect = () => {
     });
 };
 
+//test server is Deployed
+app.get('/', async (req, res) => {
+  res.status(200).json('server is deployed');
+});
 //Basic on  express
 app.use(express.json());
 app.use(
