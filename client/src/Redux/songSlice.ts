@@ -81,6 +81,14 @@ const songSlice = createSlice({
       state.error = true;
       state.loading = false;
     },
+
+    fetchGenreStart(state, action: PayloadAction<string>) {
+      state.loading = true;
+    },
+    fetchGenreSuccess(state, action: PayloadAction<Song[]>) {
+      state.loading = true;
+      state.song = action.payload;
+    },
   },
 });
 
@@ -101,5 +109,7 @@ export const {
   fetchArtistFiler,
   fetchArtistStart,
   fetchArtistSuccess,
+  fetchGenreStart,
+  fetchGenreSuccess,
 } = songSlice.actions;
 export default songSlice.reducer;

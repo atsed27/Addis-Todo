@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
+import Genres from '../components/Genres';
 
 const Container = styled.div`
   margin-top: 20px;
@@ -14,9 +15,7 @@ const Top = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const Bottom = styled.div`
-  margin-top: 10px;
-`;
+const Bottom = styled.div``;
 const Select = styled.select`
   padding: 10px 20px;
   margin-right: 15px;
@@ -28,7 +27,6 @@ const Select = styled.select`
 const Option = styled.option``;
 function Genre() {
   const [sort, setSort] = useState('AllGenre');
-  console.log(sort);
   return (
     <Container>
       <Wrapper>
@@ -41,7 +39,9 @@ function Genre() {
             <Option value="sol">Sol</Option>
           </Select>
         </Top>
-        <Bottom>Music</Bottom>
+        <Bottom>
+          <Genres sort={sort} />
+        </Bottom>
       </Wrapper>
     </Container>
   );

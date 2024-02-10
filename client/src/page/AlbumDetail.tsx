@@ -14,7 +14,6 @@ const Wrapper = styled.div``;
 function AlbumDetail() {
   const dispatch = useDispatch();
   const location = useLocation();
-
   const album: string = location.pathname.split('/')[2];
   console.log(album);
   const track = useSelector((state: RootState) => state.song);

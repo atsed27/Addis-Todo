@@ -20,7 +20,6 @@ const HR = styled.hr`
 
 const MainComponent = styled.div`
   margin: 0px 5px;
-  overflow-y: scroll;
 `;
 const Track = styled.div``;
 const Top = styled.div`
@@ -36,19 +35,7 @@ const Add = styled.button`
   border: none;
   font-weight: 600;
 `;
-const Play = styled.button`
-  margin-right: 10px;
-  margin-right: 10px;
-  font-size: 25px;
-  border: none;
-  font-weight: 600;
-`;
-const Shelf = styled.button`
-  margin-right: 10px;
-  font-size: 25px;
-  border: none;
-  font-weight: 600;
-`;
+
 const MusicContainer = styled.div`
   margin-bottom: 170px;
   background-color: gray;
@@ -202,8 +189,6 @@ function TrackM({ song }: Props) {
                 +
               </Link>
             </Add>
-            <Play>p</Play>
-            <Shelf>s</Shelf>
           </Right>
         </Top>
         <MusicContainer>

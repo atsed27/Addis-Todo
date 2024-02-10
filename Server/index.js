@@ -7,6 +7,7 @@ import cors from 'cors';
 import songRouter from './router/song.js';
 import artistRouter from './router/artist.js';
 import albumRouter from './router/album.js';
+import genreRouter from './router/genre.js';
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use(
 app.use('/api/song', songRouter);
 app.use('/api/artist', artistRouter);
 app.use('/api/albums', albumRouter);
+app.use('/api/genre', genreRouter);
 
 //Error handling
 app.use((err, req, res, next) => {

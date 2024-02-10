@@ -11,6 +11,8 @@ import {
   fetchArtistSongSuccess,
   fetchArtistSuccess,
   fetchFiler,
+  fetchGenreStart,
+  fetchGenreSuccess,
   fetchSuccess,
   fetchUpdateStart,
 } from './songSlice';
@@ -105,6 +107,20 @@ function* fetchArtistAlbumSync(
     fetchFiler();
   }
 }
+
+function* fetchGenreSync(
+  action: ReturnType<typeof fetchGenreStart>
+): SagaIterator {
+  try {
+    console.log(action);
+    const song = yield call(() =>
+      axios.get(`http://localhost:5000/api/genre/get?genre=${action.payload}`)
+    );
+    yield put(fetchGenreSuccess(song.data));
+  } catch (error) {
+    fetchFiler();
+  }
+}
 export default function* rootSaga(): SagaIterator {
   yield takeLatest('song/fetchStart', fetchStartAsync);
   yield takeLatest('song/fetchAlbumStart', fetchAlbumSync);
@@ -119,4 +135,7 @@ export default function* rootSaga(): SagaIterator {
 
   //get each artist Album
   yield takeLatest('song/fetchArtistAlbumStart', fetchArtistAlbumSync);
+
+  //get By Genre
+  yield takeLatest('song/fetchGenreStart', fetchGenreSync);
 }
