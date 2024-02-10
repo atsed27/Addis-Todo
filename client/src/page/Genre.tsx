@@ -33,10 +33,11 @@ function Genre() {
         <Top>
           <Select onChange={(e) => setSort(e.target.value)}>
             <Option value="All">AllGenre</Option>
-            <Option value="rega">Rega</Option>
-            <Option value="pop">Pop</Option>
-            <Option value="bati">Bati</Option>
-            <Option value="sol">Sol</Option>
+            <Option value="Pop">Pop</Option>
+            <Option value="Hip hop ">Hip hop </Option>
+            <Option value="Reggae">Reggae</Option>
+            <Option value="Soul">Soul</Option>
+            <Option value="Soul">Rock</Option>
           </Select>
         </Top>
         <Bottom>

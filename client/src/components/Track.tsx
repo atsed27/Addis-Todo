@@ -132,7 +132,9 @@ function TrackM({ song, update }: Props) {
   const dispatch = useDispatch();
   //delete song
   const handleClick = async (id: string) => {
-    await axios.delete(`http://localhost:5000/api/song/delete/${id}`);
+    await axios.delete(
+      `https://server-kh6f.onrender.com/api/song/delete/${id}`
+    );
     dispatch(fetchStart());
   };
   const handleUpdate = (id: string, item: Song) => {
