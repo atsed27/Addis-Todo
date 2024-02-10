@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
 app.use(express.json());
 app.use(
   cors({
-    origin: 'https://music-todo-one.vercel.app/',
+    origin: 'https://music-todo-one.vercel.app',
     credentials: true,
   })
 );
