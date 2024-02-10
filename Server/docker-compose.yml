@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: your_database_name
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb-data:/data/db
+
+  node-app:
+    build: .
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/your_database_name
+    ports:
+      - '3001:3000'
+    depends_on:
+      - mongodb
+
+volumes:
+  mongodb-data:
