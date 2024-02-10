@@ -1,9 +1,9 @@
-import React, { FormEvent, useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { fetchStart } from '../Redux/songSlice';
-
+import { useForm, SubmitHandler } from 'react-hook-form';
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -42,21 +42,27 @@ const Submit = styled.button`
   padding: 6px;
 `;
 
+type FormValues = {
+  title: string;
+  artist: string;
+  album: string;
+  genre: string;
+};
 function AddSong() {
-  const [title, setTitle] = useState('');
-  const [artist, setArtist] = useState('');
-  const [album, setAlbum] = useState('');
-  const [genre, setGenre] = useState('');
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<FormValues>();
+
   const dispatch = useDispatch();
-  const handleClick = async (e: FormEvent) => {
-    e.preventDefault();
-    console.log('hy');
-    console.log(title, artist, album, genre);
+  const handleClick: SubmitHandler<FormValues> = async (data) => {
+    console.log(data);
     const res = await axios.post('http://localhost:5000/api/song/create', {
-      title,
-      artist,
-      album,
-      genre,
+      title: data.title,
+      artist: data.artist,
+      album: data.album,
+      genre: data.genre,
     });
     if (res.status === 201) {
       dispatch(fetchStart());
@@ -71,34 +77,61 @@ function AddSong() {
       <Wrapper>
         <Top>Add your Song</Top>
 
-        <Form onSubmit={handleClick}>
+        <Form onSubmit={handleSubmit(handleClick)}>
           <InputContainer>
             <LAble>Title</LAble>
             <Input
+              type="text"
               placeholder="enter song title"
-              onChange={(e) => setTitle(e.target.value)}
+              id="title"
+              {...register('title', { required: 'Title is required' })}
             />
+            {errors.title && (
+              <span style={{ color: 'red', marginBottom: '4px' }}>
+                {errors.title.message}
+              </span>
+            )}
           </InputContainer>
           <InputContainer>
             <LAble>Artist</LAble>
             <Input
               placeholder="enter song Artist"
-              onChange={(e) => setArtist(e.target.value)}
+              id="artist"
+              {...register('artist', { required: 'Artist is required' })}
             />
+            {errors.artist && (
+              <span style={{ color: 'red', marginBottom: '4px' }}>
+                {errors.artist.message}
+              </span>
+            )}
           </InputContainer>
           <InputContainer>
             <LAble>Album</LAble>
             <Input
               placeholder="enter song Album"
-              onChange={(e) => setAlbum(e.target.value)}
+              id="album"
+              type="text"
+              {...register('album', { required: 'Album is required' })}
             />
+            {errors.album && (
+              <span style={{ color: 'red', marginBottom: '4px' }}>
+                {errors.album.message}
+              </span>
+            )}
           </InputContainer>
           <InputContainer>
             <LAble>Genre</LAble>
             <Input
               placeholder="enter song Genre"
-              onChange={(e) => setGenre(e.target.value)}
+              id="genre"
+              type="text"
+              {...register('genre', { required: 'Genre is required' })}
             />
+            {errors.genre && (
+              <span style={{ color: 'red', marginBottom: '4px' }}>
+                {errors.genre.message}
+              </span>
+            )}
           </InputContainer>
           <SubmitBody>
             <Submit type="submit">Submit</Submit>
