@@ -32,7 +32,9 @@ function NavBar() {
           <Link to="/artist">Artist</Link>
         </Title>
         <Title>
-          <Link to="/gener">Gener</Link>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to="/genre">
+            Genre
+          </Link>
         </Title>
       </Wrapper>
     </Container>

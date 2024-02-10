@@ -9,6 +9,7 @@ import Artist from './page/Artist';
 import AlbumDetail from './page/AlbumDetail';
 import ArtistDetail from './page/ArtistDetail';
 import AddSong from './page/AddSong';
+import Genre from './page/Genre';
 
 const Container = styled.div`
   display: grid;
@@ -38,14 +39,13 @@ const Wrapper4 = styled.div`
 function App() {
   return (
     <Container>
-      <Wrapper>
-        <SideBar />
-      </Wrapper>
-
-      <Wrapper2>
-        <Wrapper3>
-          <Wrapper4>
-            <BrowserRouter>
+      <BrowserRouter>
+        <Wrapper>
+          <SideBar />
+        </Wrapper>
+        <Wrapper2>
+          <Wrapper3>
+            <Wrapper4>
               {/** Mobile view */}
               <MobileMenu>
                 <NavBar />
@@ -59,12 +59,13 @@ function App() {
                   <Route path="/album/:id" element={<AlbumDetail />} />
                   <Route path="/artist/:id" element={<ArtistDetail />} />
                   <Route path="/new" element={<AddSong />} />
+                  <Route path="/genre" element={<Genre />} />
                 </Route>
               </Routes>
-            </BrowserRouter>
-          </Wrapper4>
-        </Wrapper3>
-      </Wrapper2>
+            </Wrapper4>
+          </Wrapper3>
+        </Wrapper2>
+      </BrowserRouter>
     </Container>
   );
 }

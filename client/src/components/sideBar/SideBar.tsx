@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   height: calc(100vh - 0px);
@@ -54,11 +55,37 @@ function SideBar() {
         <SideBarMenu>
           <SideBarTitle>AddisMusic</SideBarTitle>
           <SideBarList>
-            <SideBarListItem>Home</SideBarListItem>
+            <SideBarListItem>
+              <Link style={{ textDecoration: 'none', color: 'black' }} to="/">
+                Home
+              </Link>
+            </SideBarListItem>
 
-            <SideBarListItem>Album</SideBarListItem>
+            <SideBarListItem>
+              <Link
+                style={{ textDecoration: 'none', color: 'black' }}
+                to="/album"
+              >
+                Album
+              </Link>
+            </SideBarListItem>
 
-            <SideBarListItem>Artist</SideBarListItem>
+            <SideBarListItem>
+              <Link
+                style={{ textDecoration: 'none', color: 'black' }}
+                to="/artist"
+              >
+                Artist
+              </Link>
+            </SideBarListItem>
+            <SideBarListItem>
+              <Link
+                style={{ textDecoration: 'none', color: 'black' }}
+                to="/genre"
+              >
+                Genre
+              </Link>
+            </SideBarListItem>
           </SideBarList>
         </SideBarMenu>
       </Wrapper>
