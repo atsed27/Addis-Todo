@@ -9,7 +9,9 @@ export const GetByGenre = async (req, res, next) => {
       const findSong = await Song.find();
       return res.status(200).json(findSong);
     }
-    const findSong = await Song.find({ genre: genre });
+    const findSong = await Song.find({
+      genre: { $regex: genre, $options: 'i' },
+    }).limit(40);
     if (!findSong) return next(CreateError(404, 'genre is not found'));
     res.status(200).json(findSong);
   } catch (error) {
