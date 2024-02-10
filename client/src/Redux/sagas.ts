@@ -18,7 +18,9 @@ import {
 } from './songSlice';
 
 function* fetchStartAsync(): SagaIterator {
-  const songs = yield call(() => axios.get('http://localhost:5000/api/song/'));
+  const songs = yield call(() =>
+    axios.get('https://server-kh6f.onrender.com/api/song/')
+  );
   //const format = yield songs.json();
   yield put(fetchSuccess(songs?.data));
 }
